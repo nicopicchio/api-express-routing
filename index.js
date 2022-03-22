@@ -44,10 +44,19 @@ app.post('/users', (req, res) => {
 	res.json({ user: newUser });
 });
 
+
+
+
 // GET /films
 app.get('/films', (req, res) => {
-	res.json({ film: data.films });
+  if (req.query.director) {
+    res.json({film: data.films.filter((film) => film.director === req.query.director) })
+  }
+	res.json({ film: data.films});
 });
+
+
+
 
 // GET /film:id
 app.get('/films/:id', (req, res) => {
