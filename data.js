@@ -21,7 +21,7 @@ const books = [
     id: 4,
     title: "The Lean Startup",
     type: "non-fiction",
-    author: "Eric Reis"
+    author: "Eric Ries"
   }
 ];
 
