@@ -23,7 +23,6 @@ app.get('/users', (req, res) => {
 
 // GET /users/:id
 app.get('/users/:id', (req, res) => {
-	console.log(req.params);
 	res.json({
 		user: data.users.find((user) => user.id === parseInt(req.params.id)),
 	});
@@ -44,19 +43,15 @@ app.post('/users', (req, res) => {
 	res.json({ user: newUser });
 });
 
-
-
-
 // GET /films
 app.get('/films', (req, res) => {
-  if (req.query.director) {
-    res.json({film: data.films.filter((film) => film.director === req.query.director) })
-  }
-	res.json({ film: data.films});
+	if (req.query.director) {
+		res.json({
+			film: data.films.filter((film) => film.director === req.query.director),
+		});
+	}
+	res.json({ film: data.films });
 });
-
-
-
 
 // GET /film:id
 app.get('/films/:id', (req, res) => {
