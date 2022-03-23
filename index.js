@@ -28,12 +28,12 @@ app.get('/users/:id', (req, res) => {
 	});
 });
 
-// //POST /users - adds a new user
+//POST /users - adds a new user
 app.post('/users', (req, res) => {
-	//   //We can get the json data from the post body using req.body
+	  //We can get the json data from the post body using req.body
 	//   console.log("in post USERS, body is:", req.body)
 
-	//   //Create the new user
+	  //Create the new user
 	const newUser = {
 		id: data.users.length + 1,
 		//Get the email property from the post body
@@ -49,6 +49,10 @@ app.get('/films', (req, res) => {
 		res.json({
 			film: data.films.filter((film) => film.director === req.query.director),
 		});
+	} else if (req.query.limit || req.query.from) {
+		res.json({
+			film: data.films.slice(parseInt(req.query.limit))
+		})
 	}
 	res.json({ film: data.films });
 });
